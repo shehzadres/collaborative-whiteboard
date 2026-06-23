@@ -2,10 +2,16 @@
 
 type NavbarProps = {
     roomId: string;
+    onlineUsers?: number;
 };
 
-export default function Navbar({ roomId }: NavbarProps) {
-    const id = Array.isArray(roomId) ? roomId[0] : roomId;
+export default function Navbar({
+    roomId,
+    onlineUsers,
+}: NavbarProps) {
+    const id = Array.isArray(roomId)
+        ? roomId[0]
+        : roomId;
 
     return (
         <div
@@ -24,8 +30,10 @@ export default function Navbar({ roomId }: NavbarProps) {
                 borderRadius: "12px",
                 padding: "8px 14px 8px 10px",
                 boxShadow: "0 8px 28px rgba(0,0,0,0.32)",
+                color: "#E2E4E9",
             }}
         >
+            {/* ICON */}
             <svg
                 width="18"
                 height="18"
@@ -39,16 +47,19 @@ export default function Navbar({ roomId }: NavbarProps) {
                 <path d="M12 20h9" />
                 <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
             </svg>
+
+            {/* TITLE */}
             <span
                 style={{
                     fontWeight: 600,
                     fontSize: "13px",
-                    color: "#E2E4E9",
                     letterSpacing: "0.01em",
                 }}
             >
                 Whiteboard
             </span>
+
+            {/* ROOM ID */}
             {id && (
                 <>
                     <div
@@ -66,6 +77,31 @@ export default function Navbar({ roomId }: NavbarProps) {
                         }}
                     >
                         {id.slice(0, 8)}…
+                    </span>
+                </>
+            )}
+
+            {/* ONLINE USERS (FIXED + SAFE) */}
+            {typeof onlineUsers === "number" && (
+                <>
+                    <div
+                        style={{
+                            width: "1px",
+                            height: "14px",
+                            background: "rgba(255,255,255,0.12)",
+                        }}
+                    />
+                    <span
+                        style={{
+                            fontSize: "11px",
+                            color:
+                                onlineUsers > 1
+                                    ? "#22c55e"
+                                    : "#6b7280",
+                            fontFamily: "monospace",
+                        }}
+                    >
+                        👥 {onlineUsers}
                     </span>
                 </>
             )}
