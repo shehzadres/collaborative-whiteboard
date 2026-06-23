@@ -1,0 +1,1 @@
+export const DEFAULT_ROOM = "room-1";
