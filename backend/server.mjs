@@ -17,7 +17,7 @@ app.use(
     cors({
         origin: [
             "http://localhost:3000",
-            "https://collaborative-whiteboard-zeta-nine.vercel.app/",
+            "https://collaborative-whiteboard-zeta-nine.vercel.app",
         ],
         credentials: true,
     })
@@ -29,7 +29,7 @@ const io = new Server(server, {
     cors: {
         origin: [
             "http://localhost:3000",
-            "https://collaborative-whiteboard-zeta-nine.vercel.app/",
+            "https://collaborative-whiteboard-zeta-nine.vercel.app",
         ],
         methods: ["GET", "POST"],
         credentials: true,
