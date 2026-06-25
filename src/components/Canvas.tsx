@@ -73,6 +73,11 @@ export default function Canvas({
     // SOCKET EVENTS — bound once per roomId
     // =========================
     useEffect(() => {
+        // autoConnect is false in socket.ts so we connect explicitly here,
+        // after the component mounts in the browser (SSR-safe).
+        if (!socket.connected) {
+            socket.connect();
+        }
         socket.emit("join-room", roomId);
 
         if (socketBound.current) return;
@@ -146,6 +151,7 @@ export default function Canvas({
             socket.off("undo-history", handleUndo);
             socket.off("redo-history", handleRedo);
             socketBound.current = false;
+            socket.disconnect();
         };
     }, [roomId, userId, onlineUsersChange]);
 
