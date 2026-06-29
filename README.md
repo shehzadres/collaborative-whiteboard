@@ -124,7 +124,7 @@ collaborative-whiteboard/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/collaborative-whiteboard.git
+git clone https://github.com/shehzadres/collaborative-whiteboard.git
 cd collaborative-whiteboard
 ```
 
