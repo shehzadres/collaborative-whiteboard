@@ -31,6 +31,7 @@ const io = new Server(server, {
         origin: [
             "http://localhost:3000",
             "https://collaborative-whiteboard-zeta-nine.vercel.app",
+            /https:\/\/collaborative-whiteboard-.*\.vercel\.app$/,
         ],
         methods: ["GET", "POST"],
         credentials: true,
