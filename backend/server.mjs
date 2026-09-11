@@ -18,6 +18,7 @@ app.use(
         origin: [
             "http://localhost:3000",
             "https://collaborative-whiteboard-zeta-nine.vercel.app",
+            /https:\/\/collaborative-whiteboard-.*\.vercel\.app$/,
         ],
         credentials: true,
     })
